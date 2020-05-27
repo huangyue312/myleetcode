@@ -71,5 +71,28 @@
 # @lc code=start
 class Solution:
     def romanToInt(self, s: str) -> int:
-# @lc code=end
+        # #解法一 56ms 82.77% 13.5
+        # d={'I': 1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+        # d2={'IV':4,'IX':9,'XL':40,'XC':90,'CD':400,'CM':900}
+        # N=0
+        # N=0
+        # for key in d2:
+        #     if key in s and len(s)>0:
+        #         N=N+d2[key]
+        #         s=s.replace(key,'')
 
+        # if len(s)>0:
+        #     for l in list(s):
+        #         N+=d[l]
+        # return N
+        #解法二 从左到右，左大于右加上，左小于右减去
+        a = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}        
+        ans=0        
+        for i in range(len(s)):            
+            if i<len(s)-1 and a[s[i]]<a[s[i+1]]:                
+                ans-=a[s[i]]
+            else:
+                ans+=a[s[i]]
+        return ans
+
+# @lc code=end
