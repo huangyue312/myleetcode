@@ -38,6 +38,25 @@
 
 # @lc code=start
 class Solution:
-    def longestCommonPrefix(self, strs: List[str]) -> str:
+    def longestCommonPrefix(self, strs) -> str:
+        # 解法一 利用zip 标记未ac
+        ans = ''
+        for i in zip(*strs):
+            if len(set(i)) == 1:
+                ans += i[0]
+            else:
+                break
+        return ans
+
+        # #解法二 利用python中字符串大小比较
+        # if not strs: return ""
+        # s1 = min(strs)
+        # s2 = max(strs)
+        # for i,x in enumerate(s1):
+        #     if x != s2[i]:
+        #         return s2[:i]
+        # return s1
+                
+        
 # @lc code=end
 
