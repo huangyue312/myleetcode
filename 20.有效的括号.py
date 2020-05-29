@@ -58,5 +58,19 @@
 # @lc code=start
 class Solution:
     def isValid(self, s: str) -> bool:
+        d={'(':')','{':'}','[':']'}
+        stack=[]
+        for item in s:
+            if item in d:
+                stack.append(item)
+            else:
+                if len(stack)==0:
+                    return False
+                elif d[stack.pop()]!=item:
+                    return False
+        return len(stack)==0
+
+        
+            
 # @lc code=end
 
