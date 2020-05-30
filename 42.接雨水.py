@@ -30,20 +30,18 @@
 # @lc code=start
 class Solution:
     def trap(self, height) -> int:
-        (left,right) = (0,len(height)-1)
-        sum_v=0
-        while left<right :
-            if height[left]==0: left+=1
-            if height[right]==0:right-=1
-            l=height[left:right]
-            sum_l=0
-            for i in range(left,right+1):
-                if height[i]==0:
-                    sum_l+=1
-                else:
-                    height[i]-=1
-            sum_v=sum_v+sum_l
-        return sum_v
+        stack=[]
+        a=0
+        if len(height)<3: return 0
+        for i in range(0,len(height)):
+            while len(stack)>0 and height[i]>height[stack[-1]]:
+                top=stack.pop()
+                if len(stack)==0: break
+                h=min(height[i],height[stack[-1]])-height[top]
+                s=i-stack[-1]-1
+                a=a+(h*s)
+            stack.append(i)
+        return a
     
 
 # @lc code=end
