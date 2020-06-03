@@ -13,16 +13,15 @@
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        p=h=ListNode(None)
+        p=h=ListNode(0)
         s=0
         while l1 or l2 or s:
             s=s+(l1.val if l1 else 0)+(l2.val if l2 else 0)
-            val2=s%10
-            h.next=ListNode(val2)
-            s=s//10
-            l1=l1.next if l1 else None
-            l2=l2.next if l2 else None
+            h.next=ListNode(s%10)
             h=h.next
+            s=s//10
+            l1=l1.next if l1 else 0
+            l2=l2.next if l2 else 0
         return p.next
 
 
