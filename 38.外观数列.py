@@ -50,28 +50,53 @@
 # @lc code=start
 class Solution:
     def countAndSay(self, n: int) -> str:
-        l=['0','1','11']
-        #if n<=2: return l[n]
-        for i in range(3,n+1):
-            reads=''
-            j=1
-            s=1
-            while j < len(l[i-1]):
+        ##解法一 52ms
+        # l=['0','1','11']
+        # #if n<=2: return l[n]
+        # for i in range(3,n+1):
+        #     reads=''
+        #     j=1
+        #     s=1
+        #     while j < len(l[i-1]):
                 
-                if l[i-1][j-1]==l[i-1][j]:
-                    s+=1
-                    j=j+1
-                else:
-                    t=str(s)+l[i-1][j-1]
-                    reads=reads+t
-                    j=j+1
-                    s=1
-                if j== len(l[i-1]):
-                    t=str(s)+l[i-1][j-1]
-                    reads=reads+t
-                    #break
-            l.append(reads)
-        return l[n]
+        #         if l[i-1][j-1]==l[i-1][j]:
+        #             s+=1
+        #             j=j+1
+        #         else:
+        #             t=str(s)+l[i-1][j-1]
+        #             reads=reads+t
+        #             j=j+1
+        #             s=1
+        #         if j== len(l[i-1]):
+        #             t=str(s)+l[i-1][j-1]
+        #             reads=reads+t
+        #             #break
+        #     l.append(reads)
+        #return l[n]
+
+        ##解法二 32ms
+        if n <= 1:
+            return '1'
+        pre = self.countAndSay(n - 1)
+
+        res = ''
+        count = 1
+        for idx in range(len(pre)):
+
+            if idx == 0 :
+                count = 1
+
+            elif pre[idx] != pre[idx -1]:
+                tmp = str(count) + pre[idx-1]
+                res += tmp
+                count = 1
+            elif pre[idx] == pre[idx-1]:
+                count +=1
+
+            if idx == len(pre) - 1:
+                tmp = str(count) + pre[idx]
+                res += tmp
+        return res
 
             
 
