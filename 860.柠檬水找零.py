@@ -71,6 +71,26 @@
 # @lc code=start
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
-        
-# @lc code=end
+        q={5:0,10:0,20:0}
+        if bills[0]!=5: return False
+        for i in range(len(bills)):
+            
+            if bills[i]==10:
+                if q[5]>=1:q[5]-=1
+                else :return False
+            elif bills[i]==20:
+                if q[5]>=1 and q[10]>=1: 
+                    q[5]-=1
+                    q[10]-=1
+                elif q[5]>=3:
+                    q[5]-=3
+                    
+                else:
+                    return False
+            q[bills[i]]+=1
+        return True
 
+
+
+
+        
