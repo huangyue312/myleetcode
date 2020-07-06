@@ -37,14 +37,11 @@
 
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
-        s=head
-        #s_v=s.val
-        while s.next :
-            e=s.next
-            if s.val==e.val:
-                e=e.next
-            else:
-                s=e
+        cur=head
+        while cur:
+            while cur.next and cur.next.val==cur.val:
+                cur.next=cur.next.next
+            cur=cur.next
         return head
 
 # @lc code=end
