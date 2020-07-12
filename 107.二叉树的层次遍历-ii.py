@@ -19,7 +19,7 @@ class Solution:
         return res
     def bfs (self,c,treenode,res):
         if treenode:
-            #c=c+1
+            #c=c+1 
             if len(res)<c+1:
                 res.insert(0,[])
             res[-(c+1)].append(treenode.val)
