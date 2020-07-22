@@ -3,6 +3,7 @@
 #
 # [107] 二叉树的层次遍历 II
 #
+<<<<<<< HEAD
 # https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/description/
 #
 # algorithms
@@ -35,6 +36,8 @@
 # 
 # 
 #
+=======
+>>>>>>> 5c2aa061e21337e6a01fcbc60b5365b364c5eaba
 
 # @lc code=start
 # Definition for a binary tree node.
@@ -46,6 +49,7 @@
 
 class Solution:
     def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
+<<<<<<< HEAD
         ## bfs + queue   牺牲空间换时间
         queue, res = collections.deque([(root, 0)]), []
         while queue:
@@ -57,6 +61,24 @@ class Solution:
                 queue.append((node.left, level+1))
                 queue.append((node.right, level+1))
         return res
+=======
+        res=[]
+        self.bfs(0,root,res)
+        return res
+    def bfs (self,c,treenode,res):
+        if treenode:
+            #c=c+1 
+            if len(res)<c+1: 
+                res.insert(0,[])
+            res[-(c+1)].append(treenode.val)
+            self.bfs(c+1,treenode.left,res)
+            self.bfs(c+1,treenode.right,res)
+            
+
+        
+        
+                
+>>>>>>> 5c2aa061e21337e6a01fcbc60b5365b364c5eaba
 
 # @lc code=end
 
