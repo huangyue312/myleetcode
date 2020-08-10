@@ -69,7 +69,7 @@ class Solution:
             while slow is not fast:
                 slow=slow.next
                 fast=fast.next.next
-            return　True
+            return True
         except:
             return False
         
